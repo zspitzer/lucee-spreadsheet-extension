@@ -20,7 +20,7 @@ component{
 
 	private void function generateManifest(){
 		var contents = [ "Manifest-Version: 1.0" ]
-		contents.Append( "Built-Date: " & Now().DateTimeFormat( "yyyy-mm-dd hh:nn:ss" ) )
+		contents.Append( "Built-Date: " & Now().DateTimeFormat( "yyyy-mm-dd HH:nn:ss" ) )
 		contents.Append( "version: " & variables.version )
 		contents.Append( "id: " & variables.id )
 		contents.Append( "artifactId: " & variables.artifactId )
