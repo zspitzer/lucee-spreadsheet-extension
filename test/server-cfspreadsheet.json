@@ -1,0 +1,16 @@
+{
+    "app":{
+        "cfengine":"lucee-light@6.2.5+48"
+    },
+    "name":"cfspreadsheet",
+    "jvm":{
+        "heapSize":256,
+        "minHeapSize":256
+    },
+    "scripts":{
+        "onServerStart":[
+            "cp server-cfspreadsheet.config.json \\${serverinfo.serverHomeDirectory}/WEB-INF/lucee-server/context/.CFConfig.json",
+            "cp ../cfspreadsheet.lex \\${serverinfo.serverHomeDirectory}/WEB-INF/lucee-server/deploy/"
+        ]
+    }
+}

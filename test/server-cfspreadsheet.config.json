@@ -1,0 +1,38 @@
+{
+    "mode":"single",
+    "mappings":{
+        "/testbox":{
+            "physical":"{env:TESTBOX_PATH}"
+        },
+        "/lucee/":{
+            "readonly":"yes",
+            "physical":"{lucee-config}/context/",
+            "archive":"{lucee-config}/context/lucee-context.lar",
+            "primary":"physical",
+            "listenerMode":"modern",
+            "listenerType":"curr2root",
+            "inspectTemplate":"once"
+        },
+        "/lucee-server/":{
+            "readonly":"yes",
+            "physical":"{lucee-server}/context/",
+            "archive":"",
+            "primary":"physical",
+            "listenerMode":"modern",
+            "listenerType":"curr2root",
+            "inspectTemplate":"once"
+        }
+    },
+    "extensions":[
+        {
+            "id": "37C61C0A-5D7E-4256-8572639BE0CF5838",
+            "name": "ESAPI extension",
+            "version": "2.6.0.1"
+        },
+        {
+            "id": "B737ABC4-D43F-4D91-8E8E973E37C40D1B",
+            "name": "Image extension",
+            "version": "2.0.0.29"
+        }
+    ]
+}
