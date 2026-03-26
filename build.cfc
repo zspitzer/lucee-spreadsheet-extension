@@ -4,7 +4,7 @@ component{
 	variables.description = '"Spreadsheet Extension for Lucee"'
 	variables.id = '"037A27FF-0B80-4CBA-B954BEBD790B460E"'
 	variables.luceeCoreVersion = '"5.0.0.252"'
-	variables.name = '"cfspreadsheet"'
+	variables.name = '"Spreadsheet Extension"'
 	variables.version = '"4.0.0.0"'
 	
 
@@ -15,7 +15,7 @@ component{
 	}
 
 	private void function generateLexFile(){
-		zip action="zip" source="extension/" file="cfspreadsheet.lex" overwrite="true";
+		zip action="zip" source="extension/" file="spreadsheet-extension.lex" overwrite="true";
 	}
 
 	private void function generateManifest(){

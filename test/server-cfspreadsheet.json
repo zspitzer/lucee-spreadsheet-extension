@@ -10,7 +10,7 @@
     "scripts":{
         "onServerStart":[
             "cp server-cfspreadsheet.config.json \\${serverinfo.serverHomeDirectory}/WEB-INF/lucee-server/context/.CFConfig.json",
-            "cp ../cfspreadsheet.lex \\${serverinfo.serverHomeDirectory}/WEB-INF/lucee-server/deploy/"
+            "cp ../spreadsheet-extension.lex \\${serverinfo.serverHomeDirectory}/WEB-INF/lucee-server/deploy/"
         ]
     }
 }
