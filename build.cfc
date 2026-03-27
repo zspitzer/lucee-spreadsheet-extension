@@ -15,7 +15,9 @@ component{
 	}
 
 	private void function generateLexFile(){
-		compress( format="zip", source="extension/", destination="spreadsheet-extension.lex", overwrite=true )
+		if( FileExists( "spreadsheet-extension.lex" ) )
+			FileDelete( "spreadsheet-extension.lex" )
+		compress( format="zip", source="extension/", target="spreadsheet-extension.lex", includeBaseFolder=false )
 	}
 
 	private void function generateManifest(){
