@@ -1,4 +1,11 @@
 <cfscript>
+/**
+* Shifts rows up or down in a spreadsheet workbook.
+* @spreadsheet The spreadsheet workbook object
+* @start First row to shift
+* @end Last row to shift
+* @rows Number of rows to shift (positive = down, negative = up)
+*/
 void function SpreadsheetShiftRows(
 	required any spreadsheet,
 	required numeric start,

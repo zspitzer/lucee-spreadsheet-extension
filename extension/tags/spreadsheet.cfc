@@ -1,5 +1,100 @@
 component name="cfspreadsheet" {
 
+  // Meta data
+  this.metadata.hint = "Reads, writes, and updates spreadsheet files.";
+  this.metadata.attributetype = "fixed";
+  this.metadata.attributes = [
+    "action": {
+      required: true,
+      type: "string",
+      hint: "The action to perform: read, write, or update"
+    },
+    "name": {
+      required: false,
+      type: "string",
+      hint: "Variable name for the spreadsheet object, query, or string result"
+    },
+    "query": {
+      required: false,
+      type: "string",
+      hint: "Variable name of a query object to read into or write from"
+    },
+    "src": {
+      required: false,
+      type: "string",
+      hint: "Path to the spreadsheet file to read (required for action='read')"
+    },
+    "filename": {
+      required: false,
+      type: "string",
+      hint: "Path to write or update the spreadsheet file (required for action='write' and action='update')"
+    },
+    "format": {
+      required: false,
+      type: "string",
+      hint: "Output format for read: 'csv' or 'html'. Input format for write: 'csv'"
+    },
+    "sheet": {
+      required: false,
+      type: "numeric",
+      hint: "Sheet number to read (action='read' only)"
+    },
+    "sheetName": {
+      required: false,
+      type: "string",
+      hint: "Sheet name to read from or create when updating"
+    },
+    "sheetNameConflict": {
+      required: false,
+      type: "string",
+      default: "error",
+      hint: "Action when sheet name exists during write/update: 'error' or 'overwrite'"
+    },
+    "overwrite": {
+      required: false,
+      type: "boolean",
+      default: false,
+      hint: "Whether to overwrite an existing file"
+    },
+    "headerRow": {
+      required: false,
+      type: "numeric",
+      hint: "Row number containing column headers"
+    },
+    "excludeHeaderRow": {
+      required: false,
+      type: "boolean",
+      default: false,
+      hint: "Whether to exclude the header row from the query result"
+    },
+    "rows": {
+      required: false,
+      type: "string",
+      hint: "Row numbers or range to read (e.g. '1-5' or '1,3,5')"
+    },
+    "columns": {
+      required: false,
+      type: "string",
+      hint: "Column numbers or range to read"
+    },
+    "columnNames": {
+      required: false,
+      type: "string",
+      hint: "Comma-delimited list of column names for the query result"
+    },
+    "columnFormats": {
+      required: false,
+      type: "any",
+      hint: "Column format definitions (requires query attribute)"
+    },
+    "autosize": {
+      required: false,
+      type: "boolean",
+      default: false,
+      hint: "Whether to auto-size columns to fit content"
+    }
+  ];
+
   variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet()
 
   public void function init( required boolean hasEndTag, component parent ){

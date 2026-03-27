@@ -1,4 +1,10 @@
 <cfscript>
+/**
+* Returns the value of a single cell in a spreadsheet workbook.
+* @spreadsheet The spreadsheet workbook object
+* @row Row number of the cell
+* @column Column number of the cell
+*/
 any function SpreadsheetGetCellValue(
 	required any spreadsheet,
 	required numeric row,

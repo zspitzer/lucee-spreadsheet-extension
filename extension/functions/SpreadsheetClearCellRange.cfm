@@ -1,4 +1,12 @@
 <cfscript>
+/**
+* Clears the contents of a range of cells in a spreadsheet workbook.
+* @spreadsheet The spreadsheet workbook object
+* @startRow First row of the range
+* @startColumn First column of the range
+* @endRow Last row of the range
+* @endColumn Last column of the range
+*/
 void function SpreadsheetClearCellRange(
 	required any spreadsheet,
 	required numeric startRow,

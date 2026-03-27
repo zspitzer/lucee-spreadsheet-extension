@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      luceeVersions:
+        description: 'JSON array of Lucee versions to test'
+        required: false
+        default: '["6.2/snapshot/light", "7.0/snapshot/light", "7.1/snapshot/light"]'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Cache Lucee files
+        uses: actions/cache@v5
+        with:
+          path: ~/work/_actions/lucee/script-runner/main/lucee-download-cache
+          key: lucee-downloads
+
+      - name: Build extension
+        uses: lucee/script-runner@main
+        with:
+          webroot: ${{ github.workspace }}
+          execute: ci/build.cfm
+          luceeVersion: 7.0/snapshot/light
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: spreadsheet-lex
+          path: spreadsheet-extension.lex
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        lucee: ${{ fromJSON(inputs.luceeVersions || '["6.2/snapshot/light", "7.0/snapshot/light", "7.1/snapshot/light"]') }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download extension artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: spreadsheet-lex
+          path: target
+
+      - name: Cache Lucee files
+        uses: actions/cache@v5
+        with:
+          path: ~/work/_actions/lucee/script-runner/main/lucee-download-cache
+          key: lucee-downloads
+
+      - name: Checkout Lucee
+        uses: actions/checkout@v6
+        with:
+          repository: lucee/lucee
+          path: lucee
+
+      - name: Run Lucee Test Suite
+        uses: lucee/script-runner@main
+        with:
+          webroot: ${{ github.workspace }}/lucee/test
+          execute: /bootstrap-tests.cfm
+          luceeVersion: ${{ matrix.lucee }}
+          extensionDir: ${{ github.workspace }}/target
+        env:
+          testLabels: spreadsheet
+          testAdditional: ${{ github.workspace }}/tests

@@ -1,4 +1,11 @@
 <cfscript>
+/**
+* Sets the value of a single cell in a spreadsheet workbook.
+* @spreadsheet The spreadsheet workbook object
+* @value The value to set
+* @row Row number of the cell
+* @column Column number of the cell
+*/
 void function SpreadsheetSetCellValue(
 	required any spreadsheet,
 	required any value,

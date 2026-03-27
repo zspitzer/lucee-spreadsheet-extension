@@ -1,4 +1,13 @@
 <cfscript>
+/**
+* Adds an image to a spreadsheet workbook.
+* Can be called with a file path: SpreadsheetAddImage( workbook, filepath, anchor )
+* Or with image data: SpreadsheetAddImage( workbook, imageData, imageType, anchor )
+* @spreadsheet The spreadsheet workbook object
+* @arg2 Image file path or binary image data
+* @arg3 Anchor string (if arg2 is a filepath) or image type e.g. "png" (if arg2 is image data)
+* @arg4 Anchor string (only when arg2 is image data)
+*/
 void function SpreadsheetAddImage(
 	required any spreadsheet,
 	required any arg2,

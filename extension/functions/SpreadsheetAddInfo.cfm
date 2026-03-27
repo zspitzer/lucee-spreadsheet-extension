@@ -1,4 +1,9 @@
 <cfscript>
+/**
+* Adds document metadata properties to a spreadsheet workbook.
+* @spreadsheet The spreadsheet workbook object
+* @properties A struct of metadata properties (e.g. author, title, subject)
+*/
 void function SpreadsheetAddInfo(
 	required any spreadsheet,
 	required struct properties

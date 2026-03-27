@@ -1,4 +1,11 @@
 <cfscript>
+/**
+* Sets a formula on a single cell in a spreadsheet workbook.
+* @spreadsheet The spreadsheet workbook object
+* @formula The formula to set (without leading '=')
+* @row Row number of the cell
+* @column Column number of the cell
+*/
 void function SpreadsheetSetCellFormula(
 	required any spreadsheet,
 	required string formula,

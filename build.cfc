@@ -31,7 +31,7 @@ component{
 		contents.Append( "start-bundles: false" )
 		cleanUp()
 		DirectoryCreate( "extension/META-INF/" )
-		FileWrite( "extension/META-INF/MANIFEST.MF", contents.ToList( NewLine() ) )
+		FileWrite( "extension/META-INF/MANIFEST.MF", contents.ToList( NewLine() ) & NewLine() )
 		FileCopy( "images/logo.png", "extension/META-INF/logo.png" )
 	}
 

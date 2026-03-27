@@ -1,4 +1,10 @@
 <cfscript>
+/**
+* Auto-sizes a column to fit its content.
+* @spreadsheet The spreadsheet workbook object
+* @column Column number to auto-size
+* @useMergedCells Whether to consider merged cells when calculating width
+*/
 void function SpreadsheetAutoSizeColumn(
   required any spreadsheet,
   required numeric column,
