@@ -67,11 +67,11 @@ component extends="org.lucee.cfml.test.LuceeTestCase" labels="spreadsheet" {
 				spreadsheetTypes.Each( ( type )=>{
 					var path = variables[ "temp" & type & "Path" ]
 					s.newChainable( type ).addRows( data ).write( path, true )
-					var expected = "Frumpo McNugget#NewLine()#Susi Sorglos#NewLine()#"
+					var expected = "Frumpo McNugget" & Chr( 10 ) & "Susi Sorglos" & Chr( 10 )
 					```
 					<cfspreadsheet action="read" src="#path#" format="csv" name="actual" excludeHeaderRow=true>
 					```
-					expect( actual ).toBe( expected )
+					expect( actual.replace( Chr( 13 ), "", "all" ) ).toBe( expected )
 				})
 			})
 
