@@ -74,7 +74,7 @@ jobs:
           execute: /bootstrap-tests.cfm
           luceeVersion: ${{ matrix.lucee }}
           extensionDir: ${{ github.workspace }}/target
-          extensions: org.lucee:image-extension
+          extensions: org.lucee:image-extension:3.0.1.1
         env:
           testLabels: spreadsheet
           testAdditional: ${{ github.workspace }}/tests
