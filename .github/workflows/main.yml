@@ -77,3 +77,4 @@ jobs:
         env:
           testLabels: spreadsheet
           testAdditional: ${{ github.workspace }}/tests
+          testDebug: true
