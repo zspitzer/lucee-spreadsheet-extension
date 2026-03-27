@@ -30,6 +30,7 @@ jobs:
           webroot: ${{ github.workspace }}
           execute: ci/build.cfm
           luceeVersion: 7.0/snapshot/light
+          extensions: org.lucee:compress-extension:2.1.0.2-SNAPSHOT
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
