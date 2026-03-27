@@ -15,7 +15,7 @@ component{
 	}
 
 	private void function generateLexFile(){
-		zip action="zip" source="extension/" file="spreadsheet-extension.lex" overwrite="true";
+		compress( format="zip", source="extension/", destination="spreadsheet-extension.lex", overwrite=true )
 	}
 
 	private void function generateManifest(){
