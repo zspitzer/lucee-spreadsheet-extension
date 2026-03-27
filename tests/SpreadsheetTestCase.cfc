@@ -1,13 +1,12 @@
-component extends="org.lucee.cfml.test.LuceeTestCase" {
+component {
 
-	function beforeAll(){
+	function init( required struct vars ){
 		var spreadsheetCFMLPath = server.system.environment.SPREADSHEET_CFML_PATH ?: "com/github/cfsimplicity/"
-		variables.spreadsheetCFML = New "#spreadsheetCFMLPath#Spreadsheet"()
-		variables.s = spreadsheetCFML
-		variables.tempDir = GetTempDirectory( true )
-		variables.tempXlsPath = variables.tempDir & "temp.xls"
-		variables.tempXlsxPath = variables.tempDir & "temp.xlsx"
-		variables.spreadsheetTypes = [ "xls", "xlsx" ]
+		arguments.vars.s = New "#spreadsheetCFMLPath#Spreadsheet"()
+		arguments.vars.tempDir = GetTempDirectory( true )
+		arguments.vars.tempXlsPath = arguments.vars.tempDir & "temp.xls"
+		arguments.vars.tempXlsxPath = arguments.vars.tempDir & "temp.xlsx"
+		arguments.vars.spreadsheetTypes = [ "xls", "xlsx" ]
 	}
 
 	function getTestFilePath( required string filename ){
