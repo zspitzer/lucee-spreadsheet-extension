@@ -8,7 +8,7 @@ void function SpreadsheetDeleteColumn(
 	required any spreadsheet,
   required numeric column
 ){
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.deleteColumn( arguments.spreadsheet, arguments.column )
 }
 </cfscript>

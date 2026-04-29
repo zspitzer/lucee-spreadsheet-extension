@@ -12,7 +12,7 @@ void function SpreadsheetSetCellFormula(
 	required numeric row,
 	required numeric column
 ){
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.setCellFormula(
     arguments.spreadsheet,
     arguments.formula,

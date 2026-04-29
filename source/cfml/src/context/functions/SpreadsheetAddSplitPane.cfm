@@ -16,7 +16,7 @@ void function SpreadsheetAddSplitPane(
   required numeric splitrow,
   string position="UPPER_LEFT"
 ){
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.addSplitPane(
     workbook: arguments.spreadsheet,
     xSplitPosition: arguments.xpos,

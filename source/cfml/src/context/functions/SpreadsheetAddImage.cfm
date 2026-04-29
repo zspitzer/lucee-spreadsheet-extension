@@ -14,7 +14,7 @@ void function SpreadsheetAddImage(
   required string arg3,
   string arg4
 ){
-  param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+  param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
   // for some reason argumentCollection doesn't work here (required anchor gets lost)
   if( arguments.KeyExists( "arg4" ) ){
     spreadsheetCFML.addImage( workbook: arguments.spreadsheet, imageData: arguments.arg2, imageType: arguments.arg3, anchor: arguments.arg4 )

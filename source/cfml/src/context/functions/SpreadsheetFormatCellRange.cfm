@@ -18,7 +18,7 @@ void function SpreadsheetFormatCellRange(
 ){
   // NOTE: the order of arguments is different in SpreadsheetCFML
   arguments.workbook = arguments.spreadsheet
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.formatCellRange( argumentCollection=arguments )
 }
 </cfscript>

@@ -4,7 +4,7 @@
 * @testObject The object to test
 */
 boolean function IsSpreadsheetObject( required any testObject ){
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	return spreadsheetCFML.isSpreadsheetObject( arguments.testObject )
 }
 </cfscript>

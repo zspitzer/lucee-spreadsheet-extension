@@ -15,7 +15,7 @@ void function SpreadsheetShiftColumns(
   arguments.workbook = arguments.spreadsheet
   if( arguments.KeyExists( "columns" ) )
     arguments.offset = arguments.columns
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.shiftColumns( argumentCollection=arguments )
 }
 </cfscript>

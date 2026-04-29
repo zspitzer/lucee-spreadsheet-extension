@@ -11,7 +11,7 @@ any function SpreadsheetGetCellValue(
 	required numeric column
 ){
 	arguments.workbook = arguments.spreadsheet
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	return spreadsheetCFML.getCellValue( argumentCollection=arguments )
 }
 </cfscript>

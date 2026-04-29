@@ -2,7 +2,7 @@ component {
 
 	function init( required struct vars ){
 		var spreadsheetCFMLPath = server.system.environment.SPREADSHEET_CFML_PATH ?: "com/github/cfsimplicity/"
-		arguments.vars.s = New "#spreadsheetCFMLPath#Spreadsheet"()
+		arguments.vars.s = New "#spreadsheetCFMLPath#Spreadsheet"( loadJavaClassesUsing="javaSettings" )
 		arguments.vars.tempDir = GetTempDirectory( true )
 		arguments.vars.tempXlsPath = arguments.vars.tempDir & "temp.xls"
 		arguments.vars.tempXlsxPath = arguments.vars.tempDir & "temp.xlsx"

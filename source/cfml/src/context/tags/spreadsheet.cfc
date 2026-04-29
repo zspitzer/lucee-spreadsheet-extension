@@ -95,7 +95,7 @@ component name="cfspreadsheet" {
     }
   ];
 
-  variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet()
+  variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" )
 
   public void function init( required boolean hasEndTag, component parent ){
     variables.hasEndTag = arguments.hasEndTag

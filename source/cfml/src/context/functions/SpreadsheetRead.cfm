@@ -4,7 +4,7 @@
 * @src Path to the spreadsheet file to read
 */
 any function SpreadsheetRead( required string src ){
-  param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+  param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
   return spreadsheetCFML.read( src=arguments.src )
 }
 </cfscript>

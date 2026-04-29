@@ -11,7 +11,7 @@ void function SpreadsheetFormatRow(
   required numeric row
 ){
   arguments.workbook = arguments.spreadsheet
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.formatRow( argumentCollection=arguments )
 }
 </cfscript>

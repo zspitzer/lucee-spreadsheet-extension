@@ -13,7 +13,7 @@ void function SpreadsheetSetFooter(
 	string rightFooter="",
 ){
   arguments.workbook = arguments.spreadsheet
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.setFooter( argumentCollection=arguments )
 }
 </cfscript>

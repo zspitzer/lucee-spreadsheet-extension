@@ -8,7 +8,7 @@ void function SpreadsheetAddInfo(
 	required any spreadsheet,
 	required struct properties
 ){
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.addInfo( arguments.spreadsheet, arguments.properties )
 }
 </cfscript>

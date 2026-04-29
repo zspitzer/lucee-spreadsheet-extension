@@ -5,7 +5,7 @@
 * @xmlFormat If true, creates an XLSX (XML) workbook instead of XLS (binary)
 */
 any function SpreadsheetNew( string sheetName, boolean xmlFormat=false ){
-  param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+  param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
   return spreadsheetCFML.New( argumentCollection=arguments )
 }
 </cfscript>

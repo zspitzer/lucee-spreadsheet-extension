@@ -8,7 +8,7 @@ void function SpreadsheetDeleteRow(
 	required any spreadsheet,
   required numeric row
 ){
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.deleteRow( arguments.spreadsheet, arguments.row )
 }
 </cfscript>

@@ -15,7 +15,7 @@ void function SpreadsheetShiftRows(
   arguments.workbook = arguments.spreadsheet
   if( arguments.KeyExists( "rows" ) )
     arguments.offset = arguments.rows
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.shiftRows( argumentCollection=arguments )
 }
 </cfscript>

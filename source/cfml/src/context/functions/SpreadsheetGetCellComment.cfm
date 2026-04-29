@@ -11,7 +11,7 @@ any function SpreadsheetGetCellComment(
 	numeric column
 ){
 	arguments.workbook = arguments.spreadsheet
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	return spreadsheetCFML.getCellComment( argumentCollection=arguments )
 }
 </cfscript>

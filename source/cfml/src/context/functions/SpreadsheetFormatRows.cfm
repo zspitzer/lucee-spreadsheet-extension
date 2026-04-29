@@ -10,7 +10,7 @@ void function SpreadsheetFormatRows(
   required struct format,
   required string rows
 ){
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.formatRows( arguments.spreadsheet, arguments.format, arguments.rows )
 }
 </cfscript>

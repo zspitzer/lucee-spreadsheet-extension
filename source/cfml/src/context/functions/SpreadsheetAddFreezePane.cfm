@@ -19,7 +19,7 @@ void function SpreadsheetAddFreezePane(
 		arguments.leftmostColumn = arguments.column
 	if( arguments.KeyExists( "row" ) )
 		arguments.topRow = arguments.row
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.addFreezePane( argumentCollection=arguments )
 }
 </cfscript>

@@ -8,7 +8,7 @@ void function SpreadsheetSetActiveSheetNumber(
 	required any spreadsheet,
   required numeric sheetNumber
 ){
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.setActiveSheetNumber( arguments.spreadsheet, arguments.sheetNumber )
 }
 </cfscript>

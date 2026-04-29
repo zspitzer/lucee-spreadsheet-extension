@@ -10,7 +10,7 @@ void function SpreadsheetSetColumnWidth(
 	required numeric column,
 	required numeric width
 ){
-	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet();
+	param variables.spreadsheetCFML = New com.github.cfsimplicity.Spreadsheet( loadJavaClassesUsing="javaSettings" );
 	spreadsheetCFML.setColumnWidth( arguments.spreadsheet, arguments.column, arguments.width )
 }
 </cfscript>
