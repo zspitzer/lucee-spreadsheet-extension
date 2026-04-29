@@ -12,7 +12,9 @@
 
 	<target name="copy-cfml">
 		<copy todir="${extDir}">
-			<fileset dir="${srcCfml}"/>
+			<fileset dir="${srcCfml}">
+				<exclude name="**/lib-osgi.jar"/>
+			</fileset>
 		</copy>
 	</target>
 
