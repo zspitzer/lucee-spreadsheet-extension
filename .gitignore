@@ -1,0 +1,21 @@
+# Build artefacts
+*.lex
+build/
+target/
+test-output/
+
+# JVM crash diagnostics
+hs_err_pid*.log
+replay_pid*.log
+
+# IDE / tooling
+.claude/
+.vscode/
+.idea/
+
+# Local dev scripts
+test*.bat
+
+# OS
+.DS_Store
+Thumbs.db
