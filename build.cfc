@@ -3,9 +3,9 @@ component{
 	variables.artifactId = '"spreadsheet-extension"'
 	variables.description = '"Spreadsheet Extension for Lucee"'
 	variables.id = '"037A27FF-0B80-4CBA-B954BEBD790B460E"'
-	variables.luceeCoreVersion = '"5.0.0.252"'
+	variables.luceeCoreVersion = '"6.2.0.300"'
 	variables.name = '"Spreadsheet Extension"'
-	variables.version = '"4.0.0.0"'
+	variables.version = '"5.5.1.0"' // first 3 octets track bundled POI version; 4th is our patch level
 	
 
 	void function run(){
