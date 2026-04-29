@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://www.w3.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.lucee</groupId>
 	<artifactId>spreadsheet-extension</artifactId>
@@ -19,6 +19,7 @@
 		<filename>spreadsheet-extension</filename>
 		<poi.version>5.5.1</poi.version>
 		<excel.streaming.reader.version>5.2.0</excel.streaming.reader.version>
+		<commons.csv.version>1.14.1</commons.csv.version>
 	</properties>
 
 	<scm>
@@ -66,6 +67,11 @@
 			<groupId>com.github.pjfanning</groupId>
 			<artifactId>excel-streaming-reader</artifactId>
 			<version>${excel.streaming.reader.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>${commons.csv.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -116,6 +122,7 @@
 									<property name="description" value="${project.description}"/>
 									<property name="poi.version" value="${poi.version}"/>
 									<property name="excel.streaming.reader.version" value="${excel.streaming.reader.version}"/>
+									<property name="commons.csv.version" value="${commons.csv.version}"/>
 								</ant>
 							</target>
 						</configuration>

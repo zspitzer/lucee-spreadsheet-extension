@@ -38,7 +38,7 @@ description: "${description}"
 lucee-core-version: "${luceeCoreVersion}"
 release-type: ${releaseType}
 start-bundles: false
-maven: "org.apache.poi:poi-ooxml-full:${poi.version},org.apache.poi:poi-ooxml:${poi.version},org.apache.poi:poi:${poi.version},com.github.pjfanning:excel-streaming-reader:${excel.streaming.reader.version}"
+maven: "org.apache.poi:poi-ooxml-full:${poi.version},org.apache.poi:poi-ooxml:${poi.version},org.apache.poi:poi:${poi.version},com.github.pjfanning:excel-streaming-reader:${excel.streaming.reader.version},org.apache.commons:commons-csv:${commons.csv.version}"
 </echo>
 	</target>
 
