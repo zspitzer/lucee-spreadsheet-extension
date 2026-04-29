@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="package" basedir="." name="spreadsheet-extension">
+	<description>
+		Build the Spreadsheet Extension .lex file.
+		Invoked by maven-antrun-plugin from pom.xml; properties are passed in.
+	</description>
+
+	<property name="srcCfml" location="source/cfml/src/context"/>
+	<property name="srcImg" location="source/images"/>
+	<property name="dist" location="target"/>
+	<property name="extDir" location="${dist}/extension"/>
+
+	<target name="copy-cfml">
+		<copy todir="${extDir}">
+			<fileset dir="${srcCfml}"/>
+		</copy>
+	</target>
+
+	<target name="copy-logo">
+		<copy todir="${extDir}/META-INF">
+			<fileset dir="${srcImg}">
+				<include name="logo.png"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="manifest">
+		<tstamp>
+			<format property="builtDate" pattern="yyyy-MM-dd HH:mm:ss"/>
+		</tstamp>
+		<echo file="${extDir}/META-INF/MANIFEST.MF">Manifest-Version: 1.0
+Built-Date: ${builtDate}
+version: "${bundleversion}"
+id: "${id}"
+artifactId: "${artifactId}"
+name: "${label}"
+description: "${description}"
+lucee-core-version: "${luceeCoreVersion}"
+release-type: ${releaseType}
+start-bundles: false
+maven: "org.apache.poi:poi-ooxml-full:${poi.version},org.apache.poi:poi-ooxml:${poi.version},org.apache.poi:poi:${poi.version},com.github.pjfanning:excel-streaming-reader:${excel.streaming.reader.version}"
+</echo>
+	</target>
+
+	<target name="package" depends="copy-cfml,copy-logo,manifest">
+		<zip destfile="${dist}/${artifactId}-${bundleversion}.lex">
+			<zipfileset dir="${extDir}"/>
+		</zip>
+	</target>
+</project>

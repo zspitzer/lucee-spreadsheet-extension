@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://www.w3.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.lucee</groupId>
+	<artifactId>spreadsheet-extension</artifactId>
+	<version>5.5.1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Spreadsheet Extension</name>
+	<description>Spreadsheet Extension for Lucee</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<id>037A27FF-0B80-4CBA-B954BEBD790B460E</id>
+		<luceeCoreVersion>6.2.0.300</luceeCoreVersion>
+		<releaseType>server</releaseType>
+		<label>Spreadsheet Extension</label>
+		<filename>spreadsheet-extension</filename>
+		<poi.version>5.5.1</poi.version>
+		<excel.streaming.reader.version>5.2.0</excel.streaming.reader.version>
+	</properties>
+
+	<scm>
+		<url>https://github.com/lucee/extension-spreadsheet</url>
+		<connection>scm:git:git://github.com/lucee/extension-spreadsheet.git</connection>
+		<developerConnection>scm:git:git@github.com:lucee/extension-spreadsheet.git</developerConnection>
+		<tag>${project.version}</tag>
+	</scm>
+
+	<licenses>
+		<license>
+			<name>The GNU Lesser General Public License, Version 2.1</name>
+			<url>http://www.gnu.org/licenses/lgpl-2.1.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>cfsimplicity</id>
+			<name>Julian Halliwell</name>
+			<roles>
+				<role>Author of bundled spreadsheet-cfml library</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-full</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.pjfanning</groupId>
+			<artifactId>excel-streaming-reader</artifactId>
+			<version>${excel.streaming.reader.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.7.0</version>
+				<executions>
+					<execution>
+						<id>copy-deps-into-extension</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/extension/maven</outputDirectory>
+							<useRepositoryLayout>true</useRepositoryLayout>
+							<copyPom>true</copyPom>
+							<excludeScope>provided</excludeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>package-lex</id>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<ant antfile="build.xml" target="package">
+									<property name="bundleversion" value="${project.version}"/>
+									<property name="filename" value="${filename}"/>
+									<property name="artifactId" value="${project.artifactId}"/>
+									<property name="id" value="${id}"/>
+									<property name="luceeCoreVersion" value="${luceeCoreVersion}"/>
+									<property name="releaseType" value="${releaseType}"/>
+									<property name="label" value="${label}"/>
+									<property name="description" value="${project.description}"/>
+									<property name="poi.version" value="${poi.version}"/>
+									<property name="excel.streaming.reader.version" value="${excel.streaming.reader.version}"/>
+								</ant>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.6.0</version>
+				<executions>
+					<execution>
+						<id>attach-lex</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-artifact</goal>
+						</goals>
+						<configuration>
+							<artifacts>
+								<artifact>
+									<file>${project.build.directory}/${project.artifactId}-${project.version}.lex</file>
+									<type>lex</type>
+								</artifact>
+							</artifacts>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
