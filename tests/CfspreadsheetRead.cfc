@@ -12,6 +12,29 @@ component extends="org.lucee.cfml.test.LuceeTestCase" labels="spreadsheet" {
 
 		describe( "cfspreadsheet action=read", ()=>{
 
+			it( "Reads a password-protected xlsx when password is supplied", ()=>{
+				var data = QueryNew( "column1,column2", "VarChar,VarChar", [ [ "a", "b" ] ] )
+				var path = variables.tempXlsxPath
+				var wb = s.workbookFromQuery( data=data, addHeaderRow=false, xmlFormat=true )
+				s.write( workbook=wb, filepath=path, overwrite=true, password="secret" )
+				```
+				<cfspreadsheet action="read" src="#path#" name="actual" password="secret">
+				```
+				expect( s.isXmlFormat( actual ) ).toBeTrue()
+			})
+
+			it( "Throws when reading a password-protected xlsx without the password attribute", ()=>{
+				var data = QueryNew( "column1,column2", "VarChar,VarChar", [ [ "a", "b" ] ] )
+				var path = variables.tempXlsxPath
+				var wb = s.workbookFromQuery( data=data, addHeaderRow=false, xmlFormat=true )
+				s.write( workbook=wb, filepath=path, overwrite=true, password="secret" )
+				expect( ()=>{
+					```
+					<cfspreadsheet action="read" src="#path#" name="actual">
+					```
+				}).toThrow()
+			})
+
 			it( "Can read an XLS file into a workbook object", ()=>{
 				var path = getTestFilePath( "test.xls" )
 				```

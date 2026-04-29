@@ -12,6 +12,19 @@ component extends="org.lucee.cfml.test.LuceeTestCase" labels="spreadsheet" {
 
 		describe( "cfspreadsheet action=write", ()=>{
 
+			it( "Writes a password-protected xlsx file when password is supplied", ()=>{
+				var data = QueryNew( "column1,column2", "VarChar,VarChar", [ [ "a", "b" ] ] )
+				var path = variables.tempXlsxPath
+				var spreadsheet = SpreadsheetNew( "default", true )
+				SpreadsheetAddRows( spreadsheet, data )
+				```
+				<cfspreadsheet action="write" name="spreadsheet" filename="#path#" password="secret" overwrite="true">
+				```
+				expect( ()=>s.read( src=path ) ).toThrow()
+				var actual = s.read( src=path, password="secret", format="query" )
+				expect( actual ).toBe( data )
+			})
+
 			it( "Writes a spreadsheet object to a file correctly", ()=>{
 				var data = QueryNew( "column1,column2", "VarChar,VarChar", [ [ "a", "b" ], [ "c", "d" ] ] )
 				spreadsheetTypes.Each( ( type )=>{

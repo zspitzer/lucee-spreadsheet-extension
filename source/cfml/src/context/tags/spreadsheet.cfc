@@ -92,6 +92,11 @@ component name="cfspreadsheet" {
       type: "boolean",
       default: false,
       hint: "Whether to auto-size columns to fit content"
+    },
+    "password": {
+      required: false,
+      type: "string",
+      hint: "Password for opening (read/update) or encrypting (write) the file. xlsx only."
     }
   ];
 
@@ -175,7 +180,9 @@ component name="cfspreadsheet" {
         caller[ queryName ] = spreadsheetCFML.read( argumentcollection=attributes )
       }
       else //Read into Spreadsheet object
-        caller[ attributes.name ] = SpreadsheetRead( src=attributes.src )
+        caller[ attributes.name ] = attributeExists( "password" )
+          ? SpreadsheetRead( src=attributes.src, password=attributes.password )
+          : SpreadsheetRead( src=attributes.src )
       return true
     }
     if( getAttribute( "action" ) == "write" ){
