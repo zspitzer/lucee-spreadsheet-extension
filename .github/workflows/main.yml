@@ -18,25 +18,21 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Cache Lucee files
-        uses: actions/cache@v5
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
         with:
-          path: ~/work/_actions/lucee/script-runner/main/lucee-download-cache
-          key: lucee-downloads
+          distribution: temurin
+          java-version: 21
+          cache: maven
 
       - name: Build extension
-        uses: lucee/script-runner@main
-        with:
-          webroot: ${{ github.workspace }}
-          execute: ci/build.cfm
-          luceeVersion: 7.0/snapshot/light
-          extensions: org.lucee:compress-extension:2.1.0.2-SNAPSHOT
+        run: mvn -B package
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
           name: spreadsheet-lex
-          path: spreadsheet-extension.lex
+          path: target/spreadsheet-extension-*.lex
 
   test:
     runs-on: ubuntu-latest
